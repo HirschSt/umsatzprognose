@@ -17,7 +17,7 @@ class Pool
     res = []
     (0..35).each do |dat|
       if dat < 2
-        res.fill("#{(Pflegedienst::STARTDATUM >> dat).strftime("%d.%m.%Y")}-31.7.2023", res.size, 40)
+        res.fill("#{(Pflegedienst::STARTDATUM >> dat).strftime("%d.%m.%Y")}-31.7.2023", res.size, 64)
       elsif dat < 5
         res.fill("#{(Pflegedienst::STARTDATUM >> dat).strftime("%d.%m.%Y")}-31.7.2023", res.size, 32 )
       elsif dat < 10
@@ -35,23 +35,29 @@ class Pool
       end
     end
     #Volatilität
+    vol = []
     (0..17).each do |dat|
       a = "#{(Pflegedienst::STARTDATUM >> dat).strftime("%d.%m.%Y")}"
       o = "#{(Pflegedienst::STARTDATUM >> 35 << dat).strftime("%d.%m.%Y")}"
       if dat < 5
-        res.fill("#{a}-#{o}", res.size, 4)
+        vol.fill("#{a}-#{o}", vol.size, 4)
       else
-        res.fill("#{a}-#{o}", res.size, 2)
+        vol.fill("#{a}-#{o}", vol.size, 2)
       end
     end
-    return res
+    return [res, vol]
   end
 
   def self.create
-    zr =self.zeitraum
+    kurve=self.zeitraum
+    zr, vol = kurve.first, kurve.last
     res = []
-    (1..Pflegedienst::ZIELGROESSE + 10).each do |id|
-      von, bis = zr.sample.split("-")
+    (1..Pflegedienst::ZIELGROESSE + 20).each do |id|
+      if id % 5 == 0
+         von, bis = vol.sample.split("-")
+      else
+         von, bis = zr.sample.split("-")
+      end
       res << Kunde.new(id, self.name, self.profile.sample, DateTime.parse(von), DateTime.parse(bis))
     end
     return res
