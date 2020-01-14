@@ -24,6 +24,12 @@ class Posten
   end
 
   def to_csv
-    "\"#{monat.strftime("%m/%Y")}\",\"#{name}\",\"#{anzahl}\",\"#{leistungsname}\",\"#{leistungsid}\",\"#{gesamtpunktzahl}\", \"#{betrag.to_f.co} €\",\"#{pauschale.to_f.co} €\", \"#{summe.to_f.co} €\"\n"
+    CSV.generate do |csv|
+      csv << self.to_a
+    end
+  end
+
+  def to_a
+    [monat.strftime("%m/%Y"), name, anzahl, leistungsname, leistungsid, gesamtpunktzahl, "#{betrag.to_f.co} €", "#{pauschale.to_f.co} €", "#{summe.to_f.co} €"]
   end
 end

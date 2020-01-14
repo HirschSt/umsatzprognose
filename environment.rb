@@ -3,7 +3,7 @@ Dir['./*.rb'].each do |file|
 end
 require 'date'
 require 'ostruct'
-require 'spreadsheet'
+require 'csv'
 
 class Float
   def co

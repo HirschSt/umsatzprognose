@@ -48,22 +48,16 @@ class Leistung
 
   def self.Preisliste
     res = []
-    res_csv = ["\"NUMMER\", \"NAME\", \"PREIS\"\n"]
     self.Gesamt.sort.each do |e|
       if e[1]["punktzahl"]
         preis = (e[1]["punktzahl"] * Leistung.CONST["punktwert"]).to_f
         preis += ((preis * Leistung.CONST["investitionspauschale"]) + (preis * Leistung.CONST["ausbildungsumlage"])).round(2)
-        res << "#{e[0]}.#{e[1]["name"]}: #{preis.co}€"
-        res_csv << "\"#{e[0]}\", \"#{e[1]["name"]}\",\"#{preis.co}€\"\n"
+        res << [e[0], e[1]["name"], "#{preis.co}€"]
       elsif e[1]["preis"]
-        res << "#{e[0]}.#{e[1]["name"]}: #{(e[1]["preis"]).to_f.co}€"
-        res_csv << "\"#{e[0]}\", \"#{e[1]["name"]}\", \"#{(e[1]["preis"]).to_f.co}€\"\n"
+        res << [e[0], e[1]["name"], "#{(e[1]["preis"]).to_f.co}€"]
       end
     end
-    #puts res
-    File.write('./export/preisliste.csv', res_csv.join(""))
-    return nil
-
+    return res
   end
 
 end
