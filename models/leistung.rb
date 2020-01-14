@@ -21,10 +21,6 @@ class Leistung
     YAML.load_file('./leistungen/pauschale.yml')
   end
 
-  def self.CONST
-    YAML.load_file('./config/config.yml')
-  end
-
   def self.Gesamt
     res = {}
     res.merge!(self.Grundpflege)
@@ -50,8 +46,8 @@ class Leistung
     res = []
     self.Gesamt.sort.each do |e|
       if e[1]["punktzahl"]
-        preis = (e[1]["punktzahl"] * Leistung.CONST["punktwert"]).to_f
-        preis += ((preis * Leistung.CONST["investitionspauschale"]) + (preis * Leistung.CONST["ausbildungsumlage"])).round(2)
+        preis = (e[1]["punktzahl"] * Pflegedienst::PUNKTWERT).to_f
+        preis += ((preis * Pflegedienst::INVESTITIONSPAUSCHALE) + (preis * Pflegedienst::AUSBILDUNGSUMLAGE)).round(2)
         res << [e[0], e[1]["name"], "#{preis.co}€"]
       elsif e[1]["preis"]
         res << [e[0], e[1]["name"], "#{(e[1]["preis"]).to_f.co}€"]

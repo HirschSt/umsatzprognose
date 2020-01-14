@@ -5,7 +5,7 @@ class Kunde
   def initialize(id, name, profil, von, bis)
     @id = id
     @zeitraum=von..bis
-    profile = YAML.load_file('./config/profile.yml')
+    profile = YAML.load_file('./kunden/profile.yml')
     @profil = profile[profil]
     @leistungen = @profil["leistungen"]
     @name = name
@@ -30,7 +30,7 @@ class Kunde
     res = []
     if (start == zeitraum.first) && erstgespraech?
       erstgespraech = leistungskatalog[12]
-      betrag = Leistung.CONST["punktwert"] * (erstgespraech["punktzahl"] * 1)
+      betrag = Pflegedienst::PUNKTWERT * (erstgespraech["punktzahl"] * 1)
       res << Posten.new(start, betrag, 12, erstgespraech["name"], 1, self.name, erstgespraech["punktzahl"])
     end
     @leistungen.each do |l|
@@ -43,7 +43,7 @@ class Kunde
       end
       begin
         if posten["punktzahl"]
-          betrag = Leistung.CONST["punktwert"] * (posten["punktzahl"] * anzahl)
+          betrag = Pflegedienst::PUNKTWERT * (posten["punktzahl"] * anzahl)
           gesamtpunktzahl = posten["punktzahl"] * anzahl
         elsif posten["preis"]
           betrag = posten["preis"] * anzahl

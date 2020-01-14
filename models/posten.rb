@@ -8,7 +8,7 @@ class Posten
     @leistungsid = leistungsid
     @leistungsname = leistungsname
     @anzahl = anzahl
-    @pauschale = ((@betrag * Leistung.CONST["investitionspauschale"]) + (@betrag * Leistung.CONST["ausbildungsumlage"])).round(2)
+    @pauschale = ((@betrag * Pflegedienst::INVESTITIONSPAUSCHALE) + (@betrag * Pflegedienst::AUSBILDUNGSUMLAGE)).round(2)
     @summe = (@betrag + @pauschale).round(2)
     @name = name
     @gesamtpunktzahl = gesamtpunktzahl
