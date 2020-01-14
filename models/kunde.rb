@@ -1,11 +1,12 @@
 class Kunde
 
-  attr_accessor :id, :leistungen, :name, :profil, :zeitraum
+  attr_accessor :id, :leistungen, :name, :profil, :profilid, :zeitraum
   
   def initialize(id, name, profil, von, bis)
     @id = id
     @zeitraum=von..bis
     profile = YAML.load_file('./kunden/profile.yml')
+    @profilid = profil
     @profil = profile[profil]
     @leistungen = @profil["leistungen"]
     @name = name
@@ -82,5 +83,14 @@ class Kunde
     end
     return res
   end
+
+  def to_s
+    "#{id}, #{name}, #{profil}, #{zeitraum}"
+  end
+
+  def to_a
+    [id, name, profilid, zeitraum.first.strftime("%Y-%m")]  
+  end
+
 
 end

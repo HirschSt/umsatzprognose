@@ -4,6 +4,7 @@ end
 require 'date'
 require 'ostruct'
 require 'csv'
+require 'faker'
 
 class Float
   def co

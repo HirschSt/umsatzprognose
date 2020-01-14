@@ -1,15 +1,15 @@
 class App
   
   def self.main
-    kx = []
     salden = [%w(MONAT ANZAHL_KUNDEN BETRAG UMLAGE SUMME)]
-
+=begin
     CSV.parse(File.read("./kunden/kunden.csv"), headers: true).each do |e|
       id = e["ID"]
       von, bis = e["ZEITRAUM"].split("-")
       kx << ::Kunde.new(id, e["NAME"], e["PROFIL"].to_i, DateTime.parse(von), DateTime.parse(bis))
     end
-    
+=end
+    kx = Pool.create
     monate = (0..35)
     monate.each do |m|
       monatsabrechnung = [%w(MONAT NAME ANZAHL LEISTUNG LEISTUNGSID GESAMTPUNKTZAHL BETRAG UMLAGE SUMME)]
@@ -51,6 +51,17 @@ class App
       end
 
     end
+  
+    CSV.open("./export/kunden.csv", "w") do |csv|
+      sorted = []
+      kx.each do |k| sorted << k.to_a end
+      csv << %w(ID NAME PROFIL ZEITRAUM)
+      sorted.sort_by{|k| k[-1]}.each do |e|
+        csv << e
+      end
+
+    end
   end
+
 
 end
