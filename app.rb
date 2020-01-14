@@ -55,7 +55,7 @@ class App
     CSV.open("./export/kunden.csv", "w") do |csv|
       sorted = []
       kx.each do |k| sorted << k.to_a end
-      csv << %w(ID NAME PROFIL DAUER ZEITRAUM)
+      csv << %w(ID NAME PROFIL ZEITRAUM)
       sorted.sort_by{|k| k[-1]}.each do |e|
         csv << e
       end
