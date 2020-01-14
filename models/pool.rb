@@ -15,49 +15,43 @@ class Pool
 
   def self.zeitraum
     res = []
-    res.fill("1.8.2020-30.9.2020", res.size, 4)
-    res.fill("1.9.2020-31.10.2020", res.size, 4)
-    res.fill("1.10.2020-30.11.2020", res.size, 4)
-    res.fill("1.11.2020-31.12.2020", res.size, 4)
-    res.fill("1.12.2020-31.1.2021", res.size, 4)
-    res.fill("1.1.2021-28.2.2021", res.size, 4)
-    res.fill("1.2.2021-31.3.2021", res.size, 4)
-    res.fill("1.3.2021-30.4.2021", res.size, 4)
-    res.fill("1.4.2021-31.5.2021", res.size, 4)
-    res.fill("1.5.2021-30.6.2021", res.size, 5)
-    res.fill("1.6.2021-31.7.2021", res.size, 5)
-    res.fill("1.7.2021-31.8.2021", res.size, 5)
-    res.fill("1.8.2021-30.9.2021", res.size, 5)
-    res.fill("1.9.2021-31.10.2021", res.size, 5)
-    res.fill("1.10.2021-30.11.2021", res.size, 5)
-    res.fill("1.11.2021-31.12.2021", res.size, 5)
-    res.fill("1.12.2021-31.1.2022", res.size, 5)
-    res.fill("1.1.2022-28.2.2022", res.size, 5)
-    res.fill("1.2.2022-31.3.2022", res.size, 5)
-    res.fill("1.3.2022-30.4.2022", res.size, 5)
-    res.fill("1.4.2022-31.5.2022", res.size, 5)
-    res.fill("1.5.2022-30.6.2022", res.size, 6)
-    res.fill("1.6.2022-31.7.2022", res.size, 6)
-    res.fill("1.7.2022-31.8.2022", res.size, 6)
-    res.fill("1.8.2022-30.9.2022", res.size, 6)
-    res.fill("1.9.2022-31.10.2022", res.size, 6)
-    res.fill("1.10.2022-30.11.2022", res.size, 6)
-    res.fill("1.11.2022-31.12.2022", res.size, 6)
-    res.fill("1.12.2022-31.1.2023", res.size, 6)
-    res.fill("1.1.2023-28.2.2023", res.size, 6)
-    res.fill("1.2.2023-31.3.2023", res.size, 6)
-    res.fill("1.3.2023-30.4.2023", res.size, 7)
-    res.fill("1.4.2023-31.5.2023", res.size, 7)
-    res.fill("1.5.2023-30.6.2023", res.size, 7)
-    res.fill("1.6.2023-31.7.2023", res.size, 7)
-    res.fill("1.7.2023-31.7.2023", res.size, 7)
+    (0..35).each do |dat|
+      if dat < 2
+        res.fill("#{(Pflegedienst::STARTDATUM >> dat).strftime("%d.%m.%Y")}-31.7.2023", res.size, 40)
+      elsif dat < 5
+        res.fill("#{(Pflegedienst::STARTDATUM >> dat).strftime("%d.%m.%Y")}-31.7.2023", res.size, 32 )
+      elsif dat < 10
+        res.fill("#{(Pflegedienst::STARTDATUM >> dat).strftime("%d.%m.%Y")}-31.7.2023", res.size, 16 )
+      elsif dat < 15
+        res.fill("#{(Pflegedienst::STARTDATUM >> dat).strftime("%d.%m.%Y")}-31.7.2023", res.size, 8 )
+      elsif dat < 20
+        res.fill("#{(Pflegedienst::STARTDATUM >> dat).strftime("%d.%m.%Y")}-31.7.2023", res.size, 6)
+      elsif dat < 25
+        res.fill("#{(Pflegedienst::STARTDATUM >> dat).strftime("%d.%m.%Y")}-31.7.2023", res.size, 6)
+      elsif dat < 30
+        res.fill("#{(Pflegedienst::STARTDATUM >> dat).strftime("%d.%m.%Y")}-31.7.2023", res.size, 5)
+      else
+        res.fill("#{(Pflegedienst::STARTDATUM >> dat).strftime("%d.%m.%Y")}-31.7.2023", res.size, 5)
+      end
+    end
+    #Volatilität
+    (0..17).each do |dat|
+      a = "#{(Pflegedienst::STARTDATUM >> dat).strftime("%d.%m.%Y")}"
+      o = "#{(Pflegedienst::STARTDATUM >> 35 << dat).strftime("%d.%m.%Y")}"
+      if dat < 5
+        res.fill("#{a}-#{o}", res.size, 4)
+      else
+        res.fill("#{a}-#{o}", res.size, 2)
+      end
+    end
     return res
   end
 
   def self.create
+    zr =self.zeitraum
     res = []
-    (1..750).each do |id|
-      von, bis = self.zeitraum.sample.split("-")
+    (1..Pflegedienst::ZIELGROESSE + 10).each do |id|
+      von, bis = zr.sample.split("-")
       res << Kunde.new(id, self.name, self.profile.sample, DateTime.parse(von), DateTime.parse(bis))
     end
     return res

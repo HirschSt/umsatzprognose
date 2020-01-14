@@ -89,7 +89,7 @@ class Kunde
   end
 
   def to_a
-    [id, name, profilid, zeitraum.first.strftime("%Y-%m")]  
+    [id, name, profilid, "#{zeitraum.first.strftime("%Y/%m")}-#{zeitraum.last.strftime("%Y/%m")}"]  
   end
 
 

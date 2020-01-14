@@ -1,5 +1,6 @@
 1:
   name: Einfach
+  dauer: 10
   leistungen:
   - id: 1
     schema: [0,1,2,3,4,5,6]
@@ -11,6 +12,7 @@
     schema: [0,1,2,3,4,5,6]
 2:
   name: Umfangreich
+  dauer: 15
   leistungen:
   - id: 1
     schema: [1,2,3,4,5,6]
@@ -24,6 +26,7 @@
     schema: [0,1,2,3,4,5,6]
 3:
   name: Kompliziert
+  dauer: 20
   leistungen:
   - id: 2
     schema: [1,3]
@@ -35,6 +38,7 @@
     anzahl: 90 
 4:
   name: Viele HPEs
+  dauer: 30
   leistungen:
   - id: 46
     schema: [0,1,2,3,4,5,6]
@@ -44,6 +48,7 @@
     schema: [0,1,2,3,4,5,6]
 5:
   name: Pflegegrad 1
+  dauer: 4
   leistungen:
   - id: 1
     schema: [1,3,5,6]

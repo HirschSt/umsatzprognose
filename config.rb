@@ -6,5 +6,6 @@ module Pflegedienst
   INVESTITIONSPAUSCHALE=0.025
   AUSBILDUNGSUMLAGE=0.02
   STARTDATUM=DateTime.parse("1.8.2020")
+  ZIELGROESSE=100
   NAMEN = YAML.load_file("./namen.yml")
 end
