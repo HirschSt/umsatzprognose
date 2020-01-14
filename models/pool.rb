@@ -10,9 +10,7 @@ class Pool
   end
 
   def self.name
-    vorname = %w(Kurt Heinz Karl Peter Klaus Alexander Birgit Anne Klara Beate Maria Doris Ingrid Helmut Horst)
-    nachname = %w(Müller Lachmann Metzger Schmitt Meiser Lang Schneider Berg Mercator Schubert Seedorf )
-    return "#{vorname.sample} #{nachname.sample}"
+    return "#{Pflegedienst::NAMEN['first_name'].sample} #{Pflegedienst::NAMEN['last_name'].sample}"
   end
 
   def self.zeitraum
