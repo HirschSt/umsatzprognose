@@ -14,7 +14,7 @@ class App
     monate.each do |m|
       monatsabrechnung = [%w(MONAT NAME ANZAHL LEISTUNG LEISTUNGSID GESAMTPUNKTZAHL BETRAG UMLAGE SUMME)]
       rechnungen = {}
-      monatsdatum = (DateTime.parse("1.8.2020") >> m)
+      monatsdatum = (Pflegedienst::STARTDATUM >> m)
       datum = monatsdatum.strftime("%d.%m.%Y")
       kundenanzahl = 0
       kx.each do |k|

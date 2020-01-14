@@ -27,10 +27,11 @@ class Kunde
   def monatsrechnung(start="1.8.2020")
     start=DateTime.parse(start)
     leistungskatalog = Leistung.Gesamt
+    punktwert = Leistung.PUNKTWERT(start)
     res = []
     if (start == zeitraum.first) && erstgespraech?
       erstgespraech = leistungskatalog[12]
-      betrag = Pflegedienst::PUNKTWERT * (erstgespraech["punktzahl"] * 1)
+      betrag = punktwert * (erstgespraech["punktzahl"] * 1)
       res << Posten.new(start, betrag, 12, erstgespraech["name"], 1, self.name, erstgespraech["punktzahl"])
     end
     @leistungen.each do |l|
@@ -43,7 +44,7 @@ class Kunde
       end
       begin
         if posten["punktzahl"]
-          betrag = Pflegedienst::PUNKTWERT * (posten["punktzahl"] * anzahl)
+          betrag = punktwert * (posten["punktzahl"] * anzahl)
           gesamtpunktzahl = posten["punktzahl"] * anzahl
         elsif posten["preis"]
           betrag = posten["preis"] * anzahl
