@@ -9,6 +9,12 @@ class Pool
     return res
   end
 
+  def self.name
+    vorname = %w(Kurt Heinz Karl Peter Klaus Alexander Birgit Anne Klara Beate Maria Doris Ingrid Helmut Horst)
+    nachname = %w(Müller Lachmann Metzger Schmitt Meiser Lang Schneider Berg Mercator Schubert Seedorf )
+    return "#{vorname.sample} #{nachname.sample}"
+  end
+
   def self.zeitraum
     res = []
     res.fill("1.8.2020-30.9.2020", res.size, 4)
@@ -51,11 +57,10 @@ class Pool
   end
 
   def self.create
-    Faker::Config.locale = 'de'
     res = []
     (1..750).each do |id|
       von, bis = self.zeitraum.sample.split("-")
-      res << Kunde.new(id, Faker::Name.unique.name, self.profile.sample, DateTime.parse(von), DateTime.parse(bis))
+      res << Kunde.new(id, self.name, self.profile.sample, DateTime.parse(von), DateTime.parse(bis))
     end
     return res
   end
