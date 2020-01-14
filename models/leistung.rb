@@ -22,7 +22,7 @@ class Leistung
   end
 
   def self.CONST
-    YAML.load_file('./config.yml')
+    YAML.load_file('./config/config.yml')
   end
 
   def self.Gesamt
