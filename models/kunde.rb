@@ -5,7 +5,7 @@ class Kunde
   def initialize(id, name, profil, von, bis)
     @id = id
     @zeitraum=von..bis
-    profile = YAML.load_file('./profile.yml')
+    profile = YAML.load_file('./config/profile.yml')
     @profil = profile[profil]
     @leistungen = @profil["leistungen"]
     @name = name

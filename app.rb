@@ -4,7 +4,7 @@ class App
     kx = []
     salden = [%w(MONAT ANZAHL_KUNDEN BETRAG UMLAGE SUMME)]
 
-    CSV.parse(File.read("./kunden.csv"), headers: true).each do |e|
+    CSV.parse(File.read("./config/kunden.csv"), headers: true).each do |e|
       id = e["ID"]
       von, bis = e["ZEITRAUM"].split("-")
       kx << ::Kunde.new(id, e["NAME"], e["PROFIL"].to_i, DateTime.parse(von), DateTime.parse(bis))
