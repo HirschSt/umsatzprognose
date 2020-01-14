@@ -1,0 +1,76 @@
+1:
+  leistungskomplex: 1
+  name: Kleine Körperpflege 
+  punktzahl: 260
+2:
+  leistungskomplex: 2
+  name: Große Körperpflege
+  punktzahl: 370
+3:
+  leistungskomplex: 3 
+  name: Große erweiterte Körperpflege
+  punktzahl: 470
+4:
+  leistungskomplex: 4
+  name: Spezielle Lagerung
+  punktzahl: 100
+5:
+  leistungskomplex: 6 
+  name: Einfache Hilfe bei der Nahrungsaufnahme
+  punktzahl: 100
+6:
+  leistungskomplex: 7
+  name: Umfangreiche Hilfe bei der Nahrungsaufnahme 
+  punktzahl: 250
+7:
+  leistungskomplex: 8 
+  name: Enterale Ernährung
+  punktzahl: 150
+8:
+  leistungskomplex: 9
+  name: Hilfestellung bei Aufstehen 
+  punktzahl: 100
+9:
+  leistungskomplex: 13 
+  name: Haushaltsführung
+  punktzahl: 600
+10:
+  leistungskomplex: 14
+  name: Pflegerische Betreuungsleistungen
+  punktzahl: 100
+11:
+  leistungskomplex: 15
+  name: Pflegefachliche Anleitung
+  punktzahl: 150
+12:
+  leistungskomplex: 16 
+  name: Erstgespräch
+  punktzahl: 900
+13:
+  leistungskomplex: 17 
+  name: Folgegespräch
+  punktzahl: 300
+14:
+  leistungskomplex: 18
+  name: Beratungseinsatz 
+  punktzahl: 1707
+15:
+  leistungskomplex: WL1
+  name: Hilfe beim Aufsuchen/Verlassen Bett 
+  punktzahl: 40
+16:
+  leistungskomplex: WL2
+  name: Kämmen und/oder Rasieren 
+  punktzahl: 50
+17:
+  leistungskomplex: WL3
+  name: Hilfe bei Ausscheidungen 
+  punktzahl: 50
+
+
+
+
+
+
+
+

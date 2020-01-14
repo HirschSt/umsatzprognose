@@ -1,0 +1,7 @@
+"MONAT", "NAME", "ANZAHL", "LEISTUNG", "LEISTUNGSID", "GESAMTPUNKTZAHL", "BETRAG", "UMLAGE", "SUMME"
+"09/2022","Herr Hirsch","30","HPE","46","0", "1506,90 €","67,81 €", "1574,71 €"
+"09/2022","Herr Hirsch","30","Weiterer Hausbesuch","47","0", "243,30 €","10,95 €", "254,25 €"
+"09/2022","Herr Hirsch","30","Hausbesuchspauschale","20","0", "187,20 €","8,42 €", "195,62 €"
+"09/2022","Hans Hartmann","17","Kleine Körperpflege","1","4420", "181,22 €","8,15 €", "189,37 €"
+"09/2022","Hans Hartmann","13","Große Körperpflege","2","4810", "197,21 €","8,87 €", "206,08 €"
+"09/2022","Hans Hartmann","30","Hausbesuchspauschale","20","0", "187,20 €","8,42 €", "195,62 €"

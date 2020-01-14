@@ -1,0 +1,54 @@
+40:
+  name: Blutdruck messen
+  preis: 4.18
+41:
+  name: Grundpflege
+  preis: 28.44
+42:
+  name: Hauswirtschaft
+  preis: 24.51
+43:
+  name: Blutzucker
+  preis: 4.71
+44:
+  name: Intensivierte Insulintherapie
+  preis: 7.17
+45:
+  name: Dekubitus
+  preis: 9.20
+46: 
+  name: HPE
+  preis: 50.23
+47:
+  name: Weiterer Hausbesuch
+  preis: 8.11
+48:
+  name: Injektion subkutan
+  preis: 6.14
+49:
+  name: Dauerkatheder
+  preis: 10.91
+50:
+  name: Medikamentengabe
+  preis: 4.85
+51:
+  name: Einreibung
+  preis: 4.54
+52:
+  name: Augentropfen
+  preis: 4.62
+53:
+  name: Medizinische Plaster
+  preis: 4.54
+54:
+  name: Richten Medikamente
+  preis: 8.42
+55:
+  name: Kompressionsstrümpfe anziehen
+  preis: 4.0
+56:
+  name: Kompressionsstrümpfe ausziehen
+  preis: 2.0
+57:
+  name: Kompressionsverbände
+  preis: 7.0
