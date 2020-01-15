@@ -2,13 +2,6 @@ class App
   
   def self.main
     salden = [%w(MONAT ANZAHL_KUNDEN BETRAG UMLAGE SUMME)]
-=begin
-    CSV.parse(File.read("./kunden/kunden.csv"), headers: true).each do |e|
-      id = e["ID"]
-      von, bis = e["ZEITRAUM"].split("-")
-      kx << ::Kunde.new(id, e["NAME"], e["PROFIL"].to_i, DateTime.parse(von), DateTime.parse(bis))
-    end
-=end
     kx = Pool.create
     monate = (0..35)
     monate.each do |m|
