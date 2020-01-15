@@ -9,4 +9,6 @@ module Pflegedienst
   ZIELGROESSE=100
   VORNAMEN = YAML.load_file("./config/vornamen.yml").split(" ")
   NACHNAMEN = YAML.load_file("./config/nachnamen.yml").split(" ")
+  # Anzahl der Kunden mit Vertragsende vor Laufzeit
+  VOLATIL = 25
 end

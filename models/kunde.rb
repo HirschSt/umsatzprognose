@@ -72,8 +72,18 @@ class Kunde
     zeitraum.cover?(datum)
   end
 
-  def zaehle_aktive(list)
-    
+  def self.aktive(datum, kundenliste)
+    c = 0
+    kundenliste.each do |kunde|
+      if kunde.aktiv?(datum)
+        c+=1
+      end
+    end
+    return c
+  end
+
+  def self.VOLATIL
+    return ((1.0 / Pflegedienst::VOLATIL) * 100).to_i
   end
 
   def anzahl(wochentage)

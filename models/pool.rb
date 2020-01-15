@@ -16,12 +16,21 @@ class Pool
   def self.create
     kurve = Verlauf.new.kurve
     res = []
+    c = 0
     kurve.each do |e|
       von = DateTime.parse(e["DATUM"])
       bis = DateTime.parse("1.8.2023")
-      anzahl = e["ANZAHL"].to_i - res.size
+      aktive = Kunde.aktive(e["DATUM"], res)
+      anzahl = e["ANZAHL"].to_i - aktive
       (1..anzahl).each do |id|
-        res << Kunde.new(id, self.name, self.profile.sample, von, bis)
+        if c % Kunde.VOLATIL == 0
+          bis2 = von >> (1..12).to_a.sample
+          res << Kunde.new(c+=1, self.name, self.profile.sample, von, bis2)
+
+        else
+          res << Kunde.new(c+=1, self.name, self.profile.sample, von, bis)
+
+        end
       end
       next
     end
