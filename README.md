@@ -1,10 +1,10 @@
 # Umsatzprognose
 ### Software für die Umsatzprognose eines ambulanten Pflegedienstes
 
-Das Programm nutzt Kennzahlen aus der Konfigurations-Datei und Verknüpft diese mit einer Verlaufstabelle. 
+Kurzbeschreibung: Das Programm nutzt Kennzahlen aus der Konfigurations-Datei und Verknüpft diese mit einer Verlaufstabelle. 
 
-## Konfiguration
-### Verlaufstabelle
+## 1. Konfiguration
+### 1.1 Verlaufstabelle
 Die Verlaufstabelle sieht ungefähr so aus:
 
 DATUM	| ANZAHL
@@ -15,7 +15,7 @@ DATUM	| ANZAHL
 
 Anzahl meint die Anzahl der Kunden des jeweiligen Monats.
 
-### Kennzahlen
+### 1.2 Kennzahlen
 Kennzahlen (z.B. Punktwert) werden in der Konfigurationsdatei config/config.rb definiert, z.B.
 ```ruby
 module Pflegedienst
@@ -27,7 +27,7 @@ module Pflegedienst
   #...
 end
 ```
-### Kundenprofile
+### 1.3 Kundenprofile
 Kunden werden automatisch anhand der Verlaufstabelle generiert. Dabei werden die Kunden per gewichteten Zufall mit Kundenprofilen verknüpft, die in der Datei config/profile.yaml definiert werden. Ein Eintrag sähe z.B. so aus:
 ```yaml
 1:
@@ -44,7 +44,7 @@ Kunden werden automatisch anhand der Verlaufstabelle generiert. Dabei werden die
 ```
 Schema meint hier das Wochenschema einer Pflege, mit Sonntag=0. Das Schema [1,6] definiert z.B. die Wochentage Montag und Samstag.
 
-### Leistungskatalog
+### 1.4 Leistungskatalog
 Definitionen von Leistungen werden im Unterverzeichnis leistungen/ definiert. Beispiel eines Eintrages:
 ```yaml
 1:
@@ -53,10 +53,18 @@ Definitionen von Leistungen werden im Unterverzeichnis leistungen/ definiert. Be
   punktzahl: 260
 ```
 
-## Ausführung
+## 2. Ausführung
 Das Programm wird als Ruby-Skript mit dem Befehl
 ```bash
 ruby start.rb
 ```
 gestartet. Dabei wird der Unterordner export/ mit Tabellendaten gefüllt. In der Datei umsatz.csv steht der Umsatz etc.
+
+Die Datei app.rb enthält die Ablaufroutine.
+
+Mit 
+```console
+local/dadimo> ./startcli
+```
+kann eine interaktive Konsole gestartet werden.
 
