@@ -64,7 +64,7 @@ Die Datei app.rb enthält die Ablaufroutine.
 
 Mit 
 ```console
-local/dadimo> ./startcli
+local/dadimo:~$ ./startcli
 ```
 kann eine interaktive Konsole gestartet werden.
 
