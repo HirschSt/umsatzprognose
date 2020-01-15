@@ -3,7 +3,7 @@ class App
   def self.main
     salden = [%w(MONAT ANZAHL_KUNDEN BETRAG UMLAGE SUMME)]
     kx = Pool.create
-    monate = (0..35)
+    monate = (0..Pflegedienst::LAUFZEIT - 1)
     monate.each do |m|
       monatsabrechnung = [%w(MONAT NAME ANZAHL LEISTUNG LEISTUNGSID GESAMTPUNKTZAHL BETRAG UMLAGE SUMME)]
       rechnungen = {}
