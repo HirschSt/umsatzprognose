@@ -5,7 +5,7 @@ class Kunde
   def initialize(id, name, profil, von, bis)
     @id = id
     @zeitraum=von..bis
-    profile = YAML.load_file('./kunden/profile.yml')
+    profile = YAML.load_file('./config/profile.yml')
     @profilid = profil
     @profil = profile[profil]
     @leistungen = @profil["leistungen"]
@@ -70,6 +70,10 @@ class Kunde
   def aktiv?(datum)
     datum = DateTime.parse(datum)
     zeitraum.cover?(datum)
+  end
+
+  def zaehle_aktive(list)
+    
   end
 
   def anzahl(wochentage)

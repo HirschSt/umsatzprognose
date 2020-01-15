@@ -1,7 +1,7 @@
 Dir['./models/*.rb'].each do |file| 
   require file 
 end
-Dir['./config.rb'].each do |file| 
+Dir['./config/config.rb'].each do |file| 
   require file 
 end
 Dir['./app.rb'].each do |file| 

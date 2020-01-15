@@ -1,7 +1,7 @@
 class Verlauf
 
   attr_accessor :kurve
-  def initialize(verlauf="./kunden/verlauf.csv")
+  def initialize(verlauf="./config/verlauf.csv")
     @kurve = CSV.parse(File.read(verlauf), headers: true).each
   end
 
