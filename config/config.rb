@@ -7,5 +7,6 @@ module Pflegedienst
   AUSBILDUNGSUMLAGE=0.02
   STARTDATUM=DateTime.parse("1.8.2020")
   ZIELGROESSE=100
-  NAMEN = YAML.load_file("./config/namen.yml")
+  VORNAMEN = YAML.load_file("./config/vornamen.yml").split(" ")
+  NACHNAMEN = YAML.load_file("./config/nachnamen.yml").split(" ")
 end

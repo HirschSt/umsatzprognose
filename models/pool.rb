@@ -10,7 +10,7 @@ class Pool
   end
 
   def self.name
-    return "#{Pflegedienst::NAMEN['first_name'].sample} #{Pflegedienst::NAMEN['last_name'].sample}"
+    return "#{Pflegedienst::VORNAMEN.sample} #{Pflegedienst::NACHNAMEN.sample}"
   end
   
   def self.create
