@@ -12,7 +12,7 @@ end
 require 'date'
 require 'ostruct'
 require 'csv'
-
+require 'pry'
 
 class Float
   def co

@@ -9,10 +9,10 @@ class App
       rechnungen = {}
       monatsdatum = (Pflegedienst::STARTDATUM >> m)
       datum = monatsdatum.strftime("%d.%m.%Y")
-      kundenanzahl = 0
+      #kundenanzahl = 0
       kx.each do |k|
         if k.aktiv?(datum)
-          kundenanzahl += 1
+          #kundenanzahl += 1
           rechnungen.merge!({k.name => k.monatsrechnung(datum)})
         end
       end
@@ -28,6 +28,7 @@ class App
       end
 
       gesamt = ::Rechnung.monatsabrechnung(rechnungen.values.flatten) 
+      kundenanzahl = Kunde.aktive(datum, kx)
       salden << [datum[3..-1],kundenanzahl,"#{gesamt.betrag.round(2).co} €", "#{gesamt.pauschale.round(2).co} €","#{gesamt.summe.round(2).co} €"]
     end
 

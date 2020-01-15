@@ -14,14 +14,26 @@ class Pool
   end
   
   def self.create
-    kurve = Verlauf.new.kurve
+    #kurve = Verlauf.new.kurve
+    verlauf = Pflegedienst::VERLAUF
     res = []
     c = 0
-    kurve.each do |e|
+    verlauf.each do |e|
       von = DateTime.parse(e["DATUM"])
       bis = DateTime.parse("1.8.2023")
       aktive = Kunde.aktive(e["DATUM"], res)
       anzahl = e["ANZAHL"].to_i - aktive
+      # Reduziere Kunden anhand des Verlaufs
+      if anzahl < 0
+        kunden_weg = res.select{|k| (k.zeitraum.first < von << 1) and (k.zeitraum.last == bis) }
+        if kunden_weg.size > anzahl.abs
+          kunden_weg[anzahl..-1].each do |kunde|
+            start = kunde.zeitraum.first
+            kunde.zeitraum = start..von << 1
+          end
+        end
+      end
+      # Addiere Kunden inkl. der Volatilität
       (1..anzahl).each do |id|
         if c % Kunde.VOLATIL == 0
           bis2 = von >> (1..12).to_a.sample
