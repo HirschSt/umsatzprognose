@@ -31,7 +31,7 @@ class App
       salden << [datum[3..-1],kundenanzahl,"#{gesamt.betrag.round(2).co} €", "#{gesamt.pauschale.round(2).co} €","#{gesamt.summe.round(2).co} €"]
     end
 
-    CSV.open("./export/salden.csv", "w") do |csv|
+    CSV.open("./export/umsatz.csv", "w") do |csv|
       salden.each do |e|
         csv << e
       end
