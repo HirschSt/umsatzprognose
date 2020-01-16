@@ -19,4 +19,4 @@ class Float
   end
 end
 
-App.main
+App.main(ARGV[0])

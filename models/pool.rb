@@ -13,9 +13,9 @@ class Pool
     return "#{Pflegedienst::VORNAMEN.sample} #{Pflegedienst::NACHNAMEN.sample}"
   end
   
-  def self.create
+  def self.create(verlauf)
     #kurve = Verlauf.new.kurve
-    verlauf = Pflegedienst::VERLAUF
+    #verlauf = Pflegedienst::VERLAUF
     res = []
     c = 0
     verlauf.each do |e|

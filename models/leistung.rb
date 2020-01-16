@@ -31,8 +31,8 @@ class Leistung
     return res
   end
 
-  def self.PUNKTWERT(year=Pflegedienst::STARTDATUM)
-    pw = Pflegedienst::PUNKTWERT * (1 + (((year.year - Pflegedienst::STARTDATUM.year)) * Pflegedienst::PUNKTWERTSTEIGERUNG))
+  def self.PUNKTWERT(startdatum, year)
+    pw = Pflegedienst::PUNKTWERT * (1 + (((year.year - startdatum.year)) * Pflegedienst::PUNKTWERTSTEIGERUNG))
     (pw * 1000).round(2)/1000.0
   end
 

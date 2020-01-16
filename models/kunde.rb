@@ -25,10 +25,12 @@ class Kunde
     return res.sum
   end
 
-  def monatsrechnung(start="1.8.2020")
-    start=DateTime.parse(start)
+  def monatsrechnung(start, year="1.8.2020")
+    year=DateTime.parse(year)
+    #start=DateTime.parse(startdatum)
+
     leistungskatalog = Leistung.Gesamt
-    punktwert = Leistung.PUNKTWERT(start)
+    punktwert = Leistung.PUNKTWERT(start, year)
     res = []
     if (start == zeitraum.first) && erstgespraech?
       erstgespraech = leistungskatalog[12]
