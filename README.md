@@ -1,7 +1,7 @@
 # Umsatzprognose
 ### Software für die Umsatzprognose eines ambulanten Pflegedienstes
 
-Kurzbeschreibung: Das Programm nutzt Kennzahlen aus einer Konfigurations-Datei und Verknüpft diese mit einer Verlaufstabelle. 
+Kurzbeschreibung: Das Programm nutzt Kennzahlen aus der Konfigurations-Datei und Verknüpft diese mit einer Verlaufstabelle. 
 
 ## 1. Konfiguration
 ### 1.1 Verlaufstabelle
